@@ -1,0 +1,15 @@
+5 Aplicacion de consola interactiva
+    6. Repetir el menú de forma infinita.mp4
+
+
+
+
+
+Crear el pakage.json
+	npm init -y
+
+Instalar colores de la consola
+	mpm install colors
+
+Crear el archivo .gitignore en la carpeta principal del proyecto
+Crear el archivo principal como por ejemplo app.js
