@@ -3,9 +3,17 @@ require ('colors')
 console.clear()
 
 // funcion principal
-const main = ()=>{
-    mostrarMenu()
-    // pausa()
+const main = async()=>{
+    
+    let opt = ''
+    
+    do {
+        opt = await mostrarMenu()
+        console.log( {opt} )
+        if ( opt !== '0' ) await pausa()
+        
+    } while ( opt !== '0' );
+
 }
 
 main()
