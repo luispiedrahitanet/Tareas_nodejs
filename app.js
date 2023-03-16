@@ -2,7 +2,9 @@ const { guardarDB, leerDB } = require('./helpers/guradarArchivo')
 const {
     inquirerMenu, 
     pausa, 
-    leerInput
+    leerInput,
+    listadoTareasBorrar,
+    confirmar
 } = require('./helpers/inquirer')
 const Tareas = require('./models/tareas')
 require('colors')
@@ -39,6 +41,18 @@ const main = async()=>{
                 break;
             case '4':   // Listar tareas pendientes
                 tareas.listarPendientesCompletadas(false)
+                break;
+            
+            
+            case '6':   // Borrar
+                const id = await listadoTareasBorrar( tareas.listadoArr )
+                if( id !== '0' ){
+                    const ok = await confirmar('¿Estás seguro de eliminar esta tarea?')
+                    if( ok ){
+                        tareas.borrarTarea( id )
+                        console.log( '===> Tarea borrada exitosamente <===' )
+                    }
+                }
                 break;
     }
 
