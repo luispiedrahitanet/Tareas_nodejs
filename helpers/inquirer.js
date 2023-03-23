@@ -25,7 +25,7 @@ const preguntas = [
             },
             {
                 value: '5',
-                name: `${'5.'.green} Completa tarea(s)`
+                name: `${'5.'.green} Completar tarea(s)`
             },
             {
                 value: '6',
@@ -42,9 +42,16 @@ const preguntas = [
 const inquirerMenu = async()=>{
     
     console.clear()
-    console.log('=========================='.green)
-    console.log('  SELECCIONE UNA OPCION'.white)
-    console.log('==========================\n'.green)
+    console.log('╔════════════════════════════════════╗'.blue)
+    console.log('║         CONTROL DE TAREAS          ║'.blue)
+    console.log('╠════════════════════════════════════╣'.blue)
+    console.log('║          Luis Piedrahita           ║'.blue)
+    console.log('║  luispiedrahita.net@gmail.com      ║'.blue)
+    console.log('╚════════════════════════════════════╝'.blue)
+    console.log()
+    console.log('====================================='.green)
+    console.log('        SELECCIONE UNA OPCION'.white)
+    console.log('=====================================\n'.green)
  
     const { opcion } = await inquirer.prompt(preguntas)     // desestructuramos el objeto 'opción', que devuelve la opción seleccionada
 
@@ -128,11 +135,37 @@ const confirmar = async ( mensaje ) => {
     return ok
 }
 
+const mostrarListadoChecklist = async( tareas = [] )=>{
+
+    const choices = tareas.map( (tarea, indice) => {
+        const idx = `${indice + 1}.`.green
+
+        return{
+            value: tarea.id,
+            name: `${idx} ${tarea.descripcion}`,
+            checked: tarea.completadoEn ? true : false
+        }
+    })
+    
+    const pregunta = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Selecciones',
+            choices
+        }
+    ]
+
+    const { ids } = await inquirer.prompt( pregunta )
+
+    return ids
+}
 
 module.exports = {
     inquirerMenu,
     pausa,
     leerInput,
     listadoTareasBorrar,
-    confirmar
+    confirmar,
+    mostrarListadoChecklist
 }
