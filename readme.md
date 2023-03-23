@@ -3,7 +3,9 @@
 
 <p>Esta es una aplicación desarrollada con NodeJS para llevar el control de tareas y que interactua con el usuario a través de la terminal </p>
 
-<img src="captura.png" align="center" alt="Captura del menú principal" title="Captura del menú principal">
+<div align="center">
+<img src="captura.png" alt="Captura del menú principal" title="Captura del menú principal">
+</div>
 
 <p>Los datos son guardados en el archivo data.json en el disco local</p>
 
